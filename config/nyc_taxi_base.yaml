@@ -1,0 +1,33 @@
+# NYC Taxi Demand ────────────────────────────────────────────────
+data:
+  path: data/processed/nyc_taxi_clean.parquet
+  history_weeks: 80           # ≈ 1.5 years
+  replay_weeks:  null           # 0.5 year
+  lags: [1, 2, 7, 52]
+  rolling_windows: [4, 12]
+
+model:
+  kind: transformer
+  seed: 0
+
+policy:
+  kind: res
+  lambda: 0.01
+  normalise_benefit: true
+  simulate_full_cost: true
+
+pricing:
+  model: cpu_hour             # runtime-based costing
+  node_type: n2d-highcpu-224  # optional, for the log only
+  price_vcpu_h: 0.0311        # USD per vCPU-hour (GCP us-central1)
+  fixed_overhead_usd: 0.00    # flat fee per retrain (optional)
+  usd_per_kwh: 0.12  
+
+output:
+  dir:   outputs/dummy
+  log_csv: replay_log.csv
+  mlflow_uri: mlruns
+  mlflow_experiment: res_paper_grid
+  run_name: dummy
+
+

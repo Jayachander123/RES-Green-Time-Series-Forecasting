@@ -1,0 +1,24 @@
+────────────────────────────────────────────────────────
+ 🚀  Quick Sanity Check (wall-time ≈ 15 min)
+────────────────────────────────────────────────────────
+▶ Running miniature experiment …
+Prepared 8 jobs.
+python -m src.pipeline --config sanity_check/tmp_cfg/93f449652b4645728d8e5b471efb9cd9.yaml
+Traceback (most recent call last):
+  File "/opt/anaconda3/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/opt/anaconda3/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/jayachanderreddykandakatla/Documents/Research/RES/Supplementary/src/pipeline.py", line 17, in <module>
+    import mlflow
+ModuleNotFoundError: No module named 'mlflow'
+Traceback (most recent call last):
+  File "/Users/jayachanderreddykandakatla/Documents/Research/RES/Supplementary/src/run_model_grid.py", line 231, in <module>
+    main()
+  File "/Users/jayachanderreddykandakatla/Documents/Research/RES/Supplementary/src/run_model_grid.py", line 224, in main
+    launch(cfg)
+  File "/Users/jayachanderreddykandakatla/Documents/Research/RES/Supplementary/src/run_model_grid.py", line 111, in launch
+    subprocess.run(cmd, check=True)
+  File "/opt/anaconda3/lib/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python', '-m', 'src.pipeline', '--config', 'sanity_check/tmp_cfg/93f449652b4645728d8e5b471efb9cd9.yaml']' returned non-zero exit status 1.

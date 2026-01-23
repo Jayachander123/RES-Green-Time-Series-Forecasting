@@ -1,0 +1,45 @@
+lightgbm 
+pandas 
+numpy==1.26.4 
+pyyaml
+pyarrow
+fastparquet
+kaggle==1.7.4.5
+
+# ───────── core ─────────
+pandas
+numpy
+scikit-learn==1.3.2           # metrics, preprocessing helpers
+PyYAML
+tqdm
+
+# ───────── models ───────
+lightgbm              # gradient-boosted baseline
+prophet               # additive time-series model  (installs cmdstanpy)
+pmdarima==2.0.4              # auto-ARIMA
+torch                 # LSTM / small transformer (CPU build)
+
+# ───────── experiment tracking ───────
+#mlflow-skinny
+mlflow==2.13.1
+
+# ───────── statistics & plots (paper) ───────
+statsmodels==0.13.5
+matplotlib
+seaborn
+plotly
+lifelines
+
+# ───────── energy usage (optional Task 4) ───────
+codecarbon==3.0.4
+
+# ───────── testing / dev ───────
+pytest
+black
+isort
+
+#optional only to download nyc raw dataset
+##google-cloud-bigquery<3.17 \
+#google-cloud-bigquery-storage<2.22
+db-dtypes
+

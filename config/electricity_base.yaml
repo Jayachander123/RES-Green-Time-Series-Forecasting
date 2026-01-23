@@ -1,0 +1,26 @@
+# 158 rows  →  104 weeks (2 y) history  + 52 weeks (1 y) replay  = 156 rows
+# keeps 2 rows head-room in case you extend the series later.
+
+data:
+  path: data/processed/electricity_weekly.parquet
+  history_weeks: 80            # first two years
+  replay_weeks:  null             # evaluate on last full year
+  lags: [1, 4, 52]              # same as other datasets
+  rolling_windows: [4, 12]
+
+model:
+  kind: lightgbm             # overwritten by the grid launcher
+  seed: 42
+
+policy:
+  kind: res                     # default baseline
+  lambda: 0.3  # λ=0 ⇒ “always retrain” baseline
+  normalise_benefit: true
+  simulate_full_cost: true
+
+output:
+  dir: outputs/dummy
+  log_csv: replay_log.csv
+  mlflow_uri: mlruns
+  mlflow_experiment: res_paper_grid
+  run_name: dummy

@@ -1,0 +1,26 @@
+# M5 Weekly Sales ────────────────────────────────────────────────
+data:
+  path: data/processed/m5_sales_clean.parquet
+  history_weeks: 156          # 3 years
+  replay_weeks:  null           # ≈ 1.15 years
+  lags: [1, 4, 52]
+  rolling_windows: [4, 12]
+
+# the launcher will overwrite only model.kind
+model:
+  kind: placeholder           # (lightgbm / prophet / arima / …)
+  seed: 42
+
+# will be fully replaced by the launcher for each policy
+policy:
+  kind: res
+  lambda: 0.0                 # dummy placeholder
+  normalise_benefit: true
+  simulate_full_cost: true
+
+output:
+  dir:   outputs/dummy        # placeholder; launcher sets a unique folder
+  log_csv: replay_log.csv
+  mlflow_uri: mlruns
+  mlflow_experiment: res_paper_grid
+  run_name: dummy

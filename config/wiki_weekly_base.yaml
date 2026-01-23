@@ -1,0 +1,26 @@
+# 27 rows  →  20 weeks history  + 6 weeks replay  = 26 rows
+# leaves one spare row so replay loop can still look at t+1.
+
+data:
+  path: data/processed/wiki_weekly.parquet
+  history_weeks: 20
+  replay_weeks:  null
+  lags: [1, 4]                  # 52-week lag would be empty → drop it
+  rolling_windows: [4]
+
+model:
+  kind: arima
+  seed: 42
+
+policy:
+  kind: res
+  lambda: 0.0
+  normalise_benefit: true
+  simulate_full_cost: true
+
+output:
+  dir: outputs/dummy
+  log_csv: replay_log.csv
+  mlflow_uri: mlruns
+  mlflow_experiment: res_paper_grid
+  run_name: dummy
