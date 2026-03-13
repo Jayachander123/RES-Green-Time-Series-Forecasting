@@ -669,8 +669,8 @@ def plot_pareto_tradeoff(runs: pd.DataFrame,
                          out_png=out_dir/"fig01b_res_vs_always.pdf")
 
     _pareto_two_policies(dsel, "RES", "PH",
-                         name_b="PERF-HORIZ",
-                         title="RES vs Perf-Horizon",
+                         name_b="PAGE-HINKLEY",
+                         title="RES vs Page-Hinkley",
                          out_png=out_dir/"fig01c_res_vs_ph.pdf")
 
     _pareto_two_policies(dsel, "RES", "FIXED",
@@ -1358,7 +1358,7 @@ def stacked_cost_carbon(runs: pd.DataFrame, dec: pd.DataFrame,
         ("res"   , "RES  λ = 0.3"  , dict(lambda_val=0.3)),
         ("fixed" , "FIXED k = 4"   , dict(k_val=4)),
         ("random", "RAND  p = 0.15", dict(p_val=0.15)),
-        ("ph"    , "PERF-HORIZ"    , dict()),
+        ("ph"    , "PAGE-HINKLEY"    , dict()),
         ("cara" , "CARA τ = 0.3",  dict(tau_val=0.3)),
     ]
     
@@ -1454,9 +1454,9 @@ def stacked_cost_carbon(runs: pd.DataFrame, dec: pd.DataFrame,
                             color=[COLORS[c] for c in cols_plot],
                             edgecolor="none", ax=ax)
     
-    # optional stub for PERF-HORIZ if its bar would be invisible ----------
-    if "PERF-HORIZ" in summary.index and summary.loc["PERF-HORIZ", cols_plot].sum() == 0:
-        stub_x = summary.index.get_loc("PERF-HORIZ")
+    # optional stub for PAGE-HINKLEY if its bar would be invisible ----------
+    if "PAGE-HINKLEY" in summary.index and summary.loc["PAGE-HINKLEY", cols_plot].sum() == 0:
+        stub_x = summary.index.get_loc("PAGE-HINKLEY")
         ax.bar(stub_x, 0.02, width=0.5, color=COLORS["retrain"])
         ax.text(stub_x, 0.05, "0 kg CO₂", ha="center", va="bottom", fontsize=8)
     
